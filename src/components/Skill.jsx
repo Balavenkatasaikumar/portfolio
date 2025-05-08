@@ -124,9 +124,10 @@ const skillItem = [
 
 const Skill = () => {
   return (
-    <section className="section">
+    <section className="section mt-12">
+      <br/>
         <div className="container">
-            <h2 className="headline-2 reveal-up">
+            <h2 className="headline-2 reveal-up mt-12">
                 Essential Tools I Use
             </h2>
             <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] reveal-up">    
