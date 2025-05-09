@@ -1,5 +1,5 @@
 /**
- * @copyright (c) 2023 by Unstoppable Domains, Inc.
+ * @copyright 2024 codewithsadee
  * @license Apache-2.0
  */
 
@@ -7,77 +7,77 @@
 /**
  * Components
  */
-import PorjectCard from "./PorjectCard";
-
-
+import ProjectCard from "./PorjectCard";
 
 
 const works = [
   {
-    imgSrc: 'fam.png',
-    title: 'Website for Family Business',
-    tags: ['Full Stack', 'SEO Optimization', 'API Development'],
-    projectLink: '' // Add the actual website link if available
+    imgSrc: '/images/project-1.jpg',
+    title: 'Full stack music app',
+    tags: ['API', 'MVC', 'Development'],
+    projectLink: 'https://musify-5al0.onrender.com/'
   },
   {
-    imgSrc: 'clg.jpg',
-    title: 'University Vehicle Data Management System',
-    tags: ['Spring Boot', 'Security', 'Data Processing'],
-    projectLink: '' // Add GitHub link if available
+    imgSrc: '/images/project-2.jpg',
+    title: 'Free stock photo app',
+    tags: ['API', 'SPA'],
+    projectLink: 'https://pixstock-official.vercel.app/'
   },
   {
-    imgSrc: 'exo.svg',
-    title: 'Exoplanet Detection System',
-    tags: ['Java', 'Spring Boot', 'Data Visualization'],
-    projectLink: '' // Add GitHub link if available
+    imgSrc: '/images/project-3.jpg',
+    title: 'Recipe app',
+    tags: ['Development', 'API'],
+    projectLink: ''
   },
-      {
-        imgSrc: 'download.jpeg',
-        title: 'Task Manager App',
-        tags: ['Java', 'ServiceNow', 'REST APIs'],
-        projectLink: ''
-      },
-      {
-        imgSrc: 'pla.jpeg',
-        title: 'Incident Management System',
-        tags: ['Java', 'API Integration', 'Automation'],
-        projectLink: ''
-      }
+  {
+    imgSrc: '/images/project-4.jpg',
+    title: 'Real state website',
+    tags: ['Web-design', 'Development'],
+    projectLink: 'https://github.com/codewithsadee-org/wealthome'
+  },
+  {
+    imgSrc: '/images/project-5.jpg',
+    title: 'eCommerce website',
+    tags: ['eCommerce', 'Development'],
+    projectLink: 'https://github.com/codewithsadee/anon-ecommerce-website'
+  },
+  {
+    imgSrc: '/images/project-6.jpg',
+    title: 'vCard Personal portfolio',
+    tags: ['Web-design', 'Development'],
+    projectLink: 'https://github.com/codewithsadee/vcard-personal-portfolio'
+  },
 ];
-
 
 
 const Work = () => {
   return (
-
-<section
-    id="work" 
-    className="section mt-12"
+    <section
+      id="work"
+      className="section"
     >
-     <div className="container" >
-        <h2 className="headline-2 mb-8 ">
-            My portfolio highlights
+      <div className="container">
+
+        <h2 className="headline-2 mb-8 reveal-up">
+          My portfolio highlights
         </h2>
-        <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,minmax(280px,1fr))]">
-            {works.map(({imgSrc, title, tags, projectLink}, key) => (
-                
-                <PorjectCard 
-                
-                key={key}
-                imgSrc={imgSrc}
-                title={title}
-                tags={tags}
-                projectLink={projectLink}
-                
-                />
 
-            ))}
+        <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
+          {works.map(({ imgSrc, title, tags, projectLink }, key) => (
+            <ProjectCard
+              key={key}
+              imgSrc={imgSrc}
+              title={title}
+              tags={tags}
+              projectLink={projectLink}
+              classes="reveal-up"
+            />
+          ))}
         </div>
-    </div>
 
-</section>
-
-)
+      </div>
+    </section>
+  )
 }
 
 export default Work

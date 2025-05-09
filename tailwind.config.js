@@ -1,6 +1,8 @@
-const tailwindScrollbar = require('tailwind-scrollbar');
+/** @type {import('tailwindcss').Config} */
 
-module.exports = {
+import tailwindScrollbar from 'tailwind-scrollbar';
+
+export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,11 +10,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif']
+        'sans': ['Inter', 'sans-serif']
       }
     },
   },
-  plugins: [
-    tailwindScrollbar({ nocompatible: true }) // 👈 Add this
-  ],
-};
+  plugins: [tailwindScrollbar],
+}

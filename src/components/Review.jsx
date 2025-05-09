@@ -1,82 +1,109 @@
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-import { useRef, useEffect } from 'react';
-import ReviewCard from './ReviewCard';
+/**
+ * @copyright 2024 codewithsadee
+ * @license Apache-2.0
+ */
 
-gsap.registerPlugin(ScrollTrigger);
+
+/**
+ * Node modules
+ */
+import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from '@gsap/react';
+
+
+/**
+ * Register gsap plugins
+ */
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
+
+/**
+ * Components
+ */
+import ReviewCard from "./ReviewCard";
+
 
 const reviews = [
-  { content: 'Exceptional work! Delivered our e-commerce platform ahead of schedule with flawless functionality and beautiful UI.', name: 'Emma Johnson', imgSrc: 'https://randomuser.me/api/portraits/women/44.jpg', company: 'ShopNest', rating: 5 },
-  { content: 'Reliable, professional, and highly skilled. Our admin dashboard has never been more intuitive or powerful.', name: 'David Wilson', imgSrc: 'https://randomuser.me/api/portraits/men/75.jpg', company: 'AdminPro', rating: 5 },
-  { content: 'The mobile-responsive design work was outstanding. Our bounce rate decreased by 60% after the redesign.', name: 'James Kim', imgSrc: 'https://randomuser.me/api/portraits/men/22.jpg', company: 'MobileFirst', rating: 4.9 },
-  { content: "Their approach to backend optimization dramatically improved our API response times. Our system runs smoother than ever!", name: "Nina Thompson", imgSrc: "https://randomuser.me/api/portraits/women/23.jpg", company: "SpeedifyTech", rating: 4.8 },
-  { content: "Absolutely brilliant problem-solving skills. Helped us debug a critical issue that had been causing downtime for weeks!", name: "Robert Taylor", imgSrc: "https://randomuser.me/api/portraits/men/54.jpg", company: "FixIT Solutions", rating: 5 },
-  { content: "Their commitment to UI/UX excellence transformed our user experience. Engagement metrics have skyrocketed!", name: "Sophia Lopez", imgSrc: "https://randomuser.me/api/portraits/women/45.jpg", company: "PixelPerfect Designs", rating: 4.9 },
-  { content: 'Implemented complex real-time features with WebSockets flawlessly. Highly recommend for advanced web applications.', name: 'Sophie Williams', imgSrc: 'https://randomuser.me/api/portraits/women/55.jpg', company: 'LiveTech', rating: 5 },
-  { content: 'Redesigned our entire UX/UI with a focus on accessibility. Received numerous compliments from our users.', name: 'Daniel Brown', imgSrc: 'https://randomuser.me/api/portraits/men/88.jpg', company: 'AccessAll', rating: 4.8 },
-  { content: 'Their full-stack expertise saved us months of development time. Delivered a perfect solution under tight deadlines.', name: 'Aisha Rahman', imgSrc: 'https://randomuser.me/api/portraits/women/33.jpg', company: 'QuickDeploy', rating: 5 }
+  {
+    content: 'Exceptional web development! Delivered a seamless, responsive site with clean code and great UX.',
+    name: 'Sophia Ramirez',
+    imgSrc: '/images/people-1.jpg',
+    company: 'PixelForge'
+  },
+  {
+    content: 'Impressive work! Fast loading times, intuitive design, and flawless backend integration. Highly recommend.',
+    name: 'Ethan Caldwell',
+    imgSrc: '/images/people-2.jpg',
+    company: 'NexaWave'
+  },
+  {
+    content: 'Outstanding developer! Built a robust site with perfect functionality. Efficient and detail-oriented.',
+    name: 'Liam Bennett',
+    imgSrc: '/images/people-3.jpg',
+    company: 'CodeCraft'
+  },
+  {
+    content: 'Creative and skilled! Produced a modern, user-friendly site that exceeded expectations. Great communication.',
+    name: 'Noah Williams',
+    imgSrc: '/images/people-4.jpg',
+    company: 'BrightWeb'
+  },
+  {
+    content: 'Professional work! Delivered on time, with a polished design and smooth user experience. Top-notch developer.',
+    name: 'Ava Thompson',
+    imgSrc: '/images/people-5.jpg',
+    company: 'TechMosaic'
+  },
+  {
+    content: 'Excellent project execution! High-quality code, responsive design, and exceptional problem-solving skills.',
+    name: 'Jonathan',
+    imgSrc: '/images/people-6.jpg',
+    company: 'Skyline Digital'
+  }
 ];
 
 
-
 const Review = () => {
-  const slideRef = useRef();
-  const wrapperRef = useRef();
 
   useGSAP(() => {
-    const slide = slideRef.current;
-    const scrollAmount = slide.scrollWidth - wrapperRef.current.clientWidth;
-
-    gsap.to(slide, {
-      x: () => `-${scrollAmount}`,
-      ease: 'power2.inOut',
+    gsap.to('.scrub-slide', {
       scrollTrigger: {
-        trigger: wrapperRef.current,
-        start: 'top center',
-        end: () => `+=${scrollAmount}`,
-        scrub: 1,
-        invalidateOnRefresh: true,
+        trigger: '.scrub-slide',
+        start: '-200% 80%',
+        end: '400% 80%',
+        scrub: true
       },
-    });
-
-    gsap.from(wrapperRef.current, {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      scrollTrigger: {
-        trigger: wrapperRef.current,
-        start: 'top 80%',
-        toggleActions: 'play none none reverse',
-      },
-    });
-  }, []);
+      x: '-1000'
+    })
+  });
 
   return (
-    <section id="reviews" className="py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-full mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-zinc-100 mb-8">
-          What People Say About Me
-        </h2>
-        
-        <div className="relative">
-          <div ref={wrapperRef} className="py-6 bg-zinc-900 rounded-lg shadow-md overflow-x-auto scrollbar-thin scrollbar-dark w-full">
-            <div ref={slideRef} className="flex gap-6 px-4 w-full justify-start">
-              {reviews.map((review, index) => (
-                <div key={index} className="transform transition-all hover:scale-105">
-                  <ReviewCard {...review} />
-                </div>
-              ))}
-            </div>
-          </div>
+    <section
+      id="reviews"
+      className="section overflow-hidden"
+    >
+      <div className="container">
 
-          <div className="mt-2 overflow-x-auto scrollbar-thin scrollbar-dark">
-            <div className="w-full h-2"></div>
-          </div>
+        <h2 className="headline-2 mb-8 reveal-up">
+          What our customers say
+        </h2>
+
+        <div className="scrub-slide flex items-stretch gap-3 w-fit">
+          {reviews.map(({ content, name, imgSrc, company }, key) => (
+            <ReviewCard
+              key={key}
+              name={name}
+              imgSrc={imgSrc}
+              company={company}
+              content={content}
+            />
+          ))}
         </div>
+
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Review;
+export default Review

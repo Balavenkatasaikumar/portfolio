@@ -2,28 +2,33 @@
  * @copyright (c) 2023 by Unstoppable Domains, Inc.
  * @license Apache-2.0
  */
-/**
- *\Node modules
- */
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
 
 /**
- * CSS link
+ * Node modules
  */
+import React from 'react';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 
-import './index.css'
-import 'lenis/dist/lenis.css'
+/**
+ * CSS
+ */
+import './index.css';
+import 'lenis/dist/lenis.css';
 
 /**
  * Components
  */
-
-
 import App from './App.jsx';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+// Render
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  createRoot(rootElement).render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
+} else {
+  console.error('No root element found!');
+}
